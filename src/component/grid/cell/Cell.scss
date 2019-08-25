@@ -1,0 +1,28 @@
+$cell-height: 48px;
+$cell-width: 48px;
+
+.Cell {
+    background: #000000;
+    border: 1px solid black;
+    box-sizing: border-box;
+    cursor: pointer;
+    height: $cell-height;
+    width: $cell-width;
+    padding: 2px;
+
+    &__content {
+        align-items: center;
+        background: #ffffff;
+        border-radius: 50%;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        width: 100%;
+    }
+
+    &:hover & {
+        &__content {
+            background: #ffff00;
+        }
+    }
+}

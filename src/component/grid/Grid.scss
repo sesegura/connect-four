@@ -1,3 +1,5 @@
+$grid-col-overflow: 48px;
+
 .Grid {
     display: flex;
     flex-direction: row;
@@ -5,7 +7,6 @@
     &__col {
         display: flex;
         flex-direction: column;
-        padding-top: 48px;
 
         &:hover {
             background-color: #ffff00;

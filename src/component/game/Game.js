@@ -1,5 +1,6 @@
 import React from "react";
 import Grid from "../grid/Grid";
+import "./Game.scss";
 
 const GRID = {
     COLS: 7,
@@ -44,22 +45,37 @@ class Game extends React.Component {
         }
 
         return (
-            <div className="Game__banner">
-                <p>{`Victory for Player ${this.state.currentPlayer.value}!`}</p>
+            <div>
+                <div className="Overlay" />
+                <div className="Banner">
+                    <div className="Banner__content">
+                        <p>{`Victory for Player ${
+                            this.state.currentPlayer.value
+                        }!`}</p>
+                    </div>
+                </div>
             </div>
         );
     }
 
     render() {
+        const boardClasses = ["Game__board"];
+        if (this.state.winner) {
+            boardClasses.push("Game__board--isOver");
+        }
+
         return (
             <div className="Game">
                 <div className="Game__players">
                     <p>{`Player ${this.state.currentPlayer.value}'s turn`}</p>
                 </div>
-                <Grid
-                    cells={this.state.grid}
-                    onClick={c => this.columnClickedHandler(c)}
-                />
+                <div className={boardClasses.join(" ")}>
+                    <Grid
+                        cells={this.state.grid}
+                        overlay={this.state.winner !== null}
+                        onClick={c => this.columnClickedHandler(c)}
+                    />
+                </div>
                 {this.renderWinBanner()}
             </div>
         );
@@ -81,16 +97,17 @@ class Game extends React.Component {
 
         let winner = null;
         if (this._hasPlayerWon(c, r, grid, this.state.currentPlayer)) {
-            debugger;
             winner = this.state.currentPlayer;
         }
 
         this.setState({
             grid,
             winner,
-            currentPlayer: PLAYERS.find(
-                player => player.value !== this.state.currentPlayer.value
-            )
+            currentPlayer: winner
+                ? this.state.currentPlayer
+                : PLAYERS.find(
+                      player => player.value !== this.state.currentPlayer.value
+                  )
         });
     }
 

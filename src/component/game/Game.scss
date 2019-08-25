@@ -1,0 +1,48 @@
+$game-board-margin: 48px;
+
+.Game {
+    position: relative;
+    margin: auto;
+    width: fit-content;
+
+    &__board {
+        margin-top: $game-board-margin;
+
+        &--isOver {
+            filter: blur(2px);
+        }
+    }
+}
+
+$overlay-offset-top: $game-board-margin + 20px;
+$overlay-z-index: 1;
+
+.Overlay {
+    background-color: rgba(120, 120, 120, 0.5);
+    bottom: 0;
+    height: calc(100% - #{$overlay-offset-top});
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: $overlay-z-index;
+}
+
+$banner-z-index: 2;
+
+.Banner {
+    background-color: #ffffff;
+    height: 48px;
+    position: absolute;
+    top: calc(50% + 12px);
+    width: 100%;
+    z-index: $banner-z-index;
+
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+}

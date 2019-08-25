@@ -4,14 +4,14 @@ import "./Grid.scss";
 
 class Grid extends React.Component {
     render() {
-        const grid = this.props.state.map((row, r) => {
-            const cols = row.map((col, c) => (
-                <Cell key={`${r}-${c}`} value={`${r}-${c}`} />
+        const grid = this.props.state.map((col, c) => {
+            const cells = col.map((cell, cl) => (
+                <Cell key={`${c}-${cl}`} value={`${c}-${cl}`} />
             ));
 
             return (
-                <div className="Grid__row" key={`${r}`}>
-                    {cols}
+                <div className="Grid__col" key={`${c}`}>
+                    {cells}
                 </div>
             );
         });

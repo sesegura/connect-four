@@ -8,7 +8,7 @@ const GRID = {
 
 const State = function() {
     return {
-        grid: Array(GRID.ROWS).fill(Array(GRID.COLS).fill(null))
+        grid: Array(GRID.COLS).fill(Array(GRID.ROWS).fill(null))
     };
 };
 

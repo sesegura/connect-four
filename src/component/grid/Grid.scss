@@ -1,6 +1,16 @@
 .Grid {
-    &__row {
+    display: flex;
+    flex-direction: row;
+
+    &__col {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+        padding-top: 48px;
+
+        &:hover {
+            border-left: 1px #ffff00;
+            border-right: 1px #ffff00;
+            background-color: #ffff00;
+        }
     }
 }

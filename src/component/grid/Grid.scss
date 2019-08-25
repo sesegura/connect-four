@@ -8,9 +8,13 @@
         padding-top: 48px;
 
         &:hover {
-            border-left: 1px #ffff00;
-            border-right: 1px #ffff00;
             background-color: #ffff00;
+        }
+
+        &--full {
+            &:hover {
+                background-color: #ff0000;
+            }
         }
     }
 }

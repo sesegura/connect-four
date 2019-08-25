@@ -7,8 +7,8 @@ $cell-width: 48px;
     box-sizing: border-box;
     cursor: pointer;
     height: $cell-height;
-    width: $cell-width;
     padding: 2px;
+    width: $cell-width;
 
     &__content {
         align-items: center;

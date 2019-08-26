@@ -99,7 +99,7 @@ class Game extends React.Component {
         grid[c][r] = this.state.currentPlayer.value;
 
         let winner = null;
-        if (this._hasPlayerWon(c, r, grid, this.state.currentPlayer)) {
+        if (this._didPlayerWin(c, r, grid, this.state.currentPlayer)) {
             winner = this.state.currentPlayer;
         }
 
@@ -118,6 +118,18 @@ class Game extends React.Component {
         return plays.length >= 4 && plays.indexOf(winCondition) > -1;
     }
 
+    _diagonalWin(col, row, grid, currentPlayer) {
+        // keeping the values within boundaries
+        const minCol = Math.min(0, col - 3);
+        const maxCol = Math.min(GRID.COLS - 1, col + 3);
+
+        // keeping the values within boundaries
+        const minRow = Math.min(0, row - 3);
+        const maxRow = Math.min(GRID.ROWS - 1, row + 3);
+
+        return false;
+    }
+
     _horizontalWin(row, grid, winCondition) {
         return this._checkWin(
             grid.map(cols => cols[row]).join(""),
@@ -129,10 +141,13 @@ class Game extends React.Component {
         return this._checkWin(grid[col].join(""), winCondition);
     }
 
-    _hasPlayerWon(col, row, grid, currentPlayer) {
+    _didPlayerWin(col, row, grid, currentPlayer) {
+        const winCondition = currentPlayer.winCondition;
+
         return (
-            this._horizontalWin(row, grid, currentPlayer.winCondition) ||
-            this._verticalWin(col, grid, currentPlayer.winCondition)
+            this._verticalWin(col, grid, winCondition) ||
+            this._horizontalWin(row, grid, winCondition) ||
+            this._diagonalWin(col, row, grid, winCondition)
         );
     }
 }

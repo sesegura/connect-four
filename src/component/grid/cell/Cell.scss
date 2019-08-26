@@ -10,19 +10,34 @@ $cell-width: 48px;
     padding: 2px;
     width: $cell-width;
 
-    &__content {
+    &--disabled {
+        pointer-events: none;
+    }
+
+    &__piece {
         align-items: center;
-        background: #ffffff;
         border-radius: 50%;
         display: flex;
         height: 100%;
         justify-content: center;
         width: 100%;
+
+        &--player0 {
+            background: #ffffff;
+        }
+
+        &--player1 {
+            background: #ffff00;
+        }
+
+        &--player2 {
+            background: #0000ff;
+        }
     }
 
     &:hover & {
-        &__content {
-            background: #ffff00;
+        &__piece {
+            background: #00ff00;
         }
     }
 }

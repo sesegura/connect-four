@@ -7,6 +7,9 @@ const GRID = {
     ROWS: 6
 };
 
+const EMPTY_VALUE = 0;
+const DEFAULT_PLAYER = 0;
+
 const PLAYERS = [
     {
         value: 1,
@@ -20,7 +23,7 @@ const PLAYERS = [
 
 function buildGrid() {
     return Array.from({ length: GRID.COLS }, () =>
-        Array.from({ length: GRID.ROWS }, () => null)
+        Array.from({ length: GRID.ROWS }, () => EMPTY_VALUE)
     );
 }
 
@@ -28,7 +31,7 @@ const State = function() {
     return {
         grid: buildGrid(),
         winner: null,
-        currentPlayer: PLAYERS[0]
+        currentPlayer: PLAYERS[DEFAULT_PLAYER]
     };
 };
 
@@ -87,7 +90,7 @@ class Game extends React.Component {
         }
 
         const grid = this.state.grid.slice();
-        const r = grid[c].lastIndexOf(null);
+        const r = grid[c].lastIndexOf(EMPTY_VALUE);
 
         if (r === -1) {
             return;

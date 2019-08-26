@@ -6,10 +6,9 @@ $game-board-margin: 48px;
     width: fit-content;
 
     &__board {
-        margin-top: $game-board-margin;
-
         &--isOver {
             filter: blur(2px);
+            pointer-events: none;
         }
     }
 }

@@ -8,13 +8,26 @@ $grid-col-overflow: 48px;
         display: flex;
         flex-direction: column;
 
-        &:hover {
-            background-color: #ffff00;
+        &::before {
+            border-left: 3px dashed #00ff00;
+            border-right: 3px dashed #00ff00;
+            box-sizing: border-box;
+            content: "";
+            display: block;
+            height: 48px;
+            opacity: 0;
+            visibility: hidden;
+            width: 48px;
+        }
+
+        &:hover::before {
+            opacity: 1;
+            visibility: visible;
         }
 
         &--full {
-            &:hover {
-                background-color: #ff0000;
+            &:hover::before {
+                border-color: #ff0000;
             }
         }
     }

@@ -5,12 +5,17 @@ import "./Grid.scss";
 class Grid extends React.Component {
     render() {
         const grid = this.props.cells.map((col, c) => {
-            const rows = col.map((row, r) => (
-                <Cell key={`${c}-${r}`} value={row} />
-            ));
-
             const classes = ["Grid__col"];
-            const isColFull = !col.some(row => row === null);
+            const isColFull = !col.some(row => !row);
+            const rows = col.map((row, r) => {
+                return (
+                    <Cell
+                        key={`${c}-${r}`}
+                        value={row}
+                        disabled={isColFull || row}
+                    />
+                );
+            });
 
             if (isColFull) {
                 classes.push("Grid__col--full");
